@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF6F0">
+  <title>Persisstant — Someone looking out for you.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF6F0;
+      --oat: #EFE8DC;
+      --forest: #1B3B2B;
+      --sage: #4A7C59;
+      --white: #FFFFFF;
+      --muted: #637067;
+      --shadow: 0 12px 30px rgba(27, 59, 43, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--cream);
+      color: var(--forest);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: "Fraunces", serif;
+      font-size: 25px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .privacy-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid rgba(27, 59, 43, 0.12);
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.55);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .privacy-pill svg {
+      width: 16px;
+      height: 16px;
+      flex: none;
+    }
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 64px;
+      padding: 54px 0 82px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Fraunces", serif;
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 660px;
+      margin-bottom: 22px;
+      font-size: clamp(46px, 7vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -3px;
+    }
+
+    .hero-copy {
+      max-width: 570px;
+      margin: 0 0 30px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .waitlist-form {
+      max-width: 560px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .waitlist-form input {
+      min-width: 0;
+      flex: 1;
+      height: 56px;
+      border: 1px solid rgba(27, 59, 43, 0.18);
+      border-radius: 9999px;
+      background: var(--white);
+      color: var(--forest);
+      font: 500 15px "Plus Jakarta Sans", sans-serif;
+      padding: 0 20px;
+      outline: none;
+      box-shadow: 0 8px 24px rgba(27, 59, 43, 0.05);
+    }
+
+    .waitlist-form input:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 4px rgba(74, 124, 89, 0.12);
+    }
+
+    .waitlist-form input::placeholder {
+      color: #8A948C;
+    }
+
+    .button {
+      min-height: 56px;
+      border: 0;
+      border-radius: 9999px;
+      background: var(--forest);
+      color: var(--white);
+      font: 600 15px "Plus Jakarta Sans", sans-serif;
+      padding: 0 24px;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(27, 59, 43, 0.16);
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .button:hover {
+      background: var(--sage);
+      transform: translateY(-2px);
+    }
+
+    .form-message {
+      min-height: 22px;
+      margin: 10px 0 0 20px;
+      font-size: 13px;
+      color: var(--sage);
+    }
+
+    .form-message.error {
+      color: #7D3E38;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 430px;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 78% 24%, rgba(250, 246, 240, 0.95) 0 4px, transparent 5px),
+        linear-gradient(145deg, #DCE5D7, #E9E2D4);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .phone {
+      position: absolute;
+      width: 236px;
+      height: 392px;
+      left: 50%;
+      bottom: -38px;
+      transform: translateX(-50%);
+      border: 8px solid var(--forest);
+      border-bottom: 0;
+      border-radius: 36px 36px 0 0;
+      background: var(--cream);
+      padding: 32px 18px 18px;
+      box-shadow: 0 22px 42px rgba(27, 59, 43, 0.18);
+    }
+
+    .phone-speaker {
+      position: absolute;
+      width: 62px;
+      height: 5px;
+      top: 13px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 9999px;
+      background: rgba(27, 59, 43, 0.16);
+    }
+
+    .phone-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .phone-card {
+      border-radius: 16px;
+      background: var(--oat);
+      padding: 16px;
+      margin-bottom: 10px;
+      box-shadow: 0 5px 14px rgba(27, 59, 43, 0.07);
+    }
+
+    .phone-card strong {
+      display: block;
+      margin-bottom: 5px;
+      font-family: "Fraunces", serif;
+      font-size: 15px;
+    }
+
+    .phone-card span {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 112px;
+      height: 112px;
+      right: -28px;
+      bottom: -34px;
+      border: 22px solid rgba(74, 124, 89, 0.24);
+      border-radius: 80% 20% 70% 30%;
+      transform: rotate(-18deg);
+    }
+
+    .features {
+      padding: 88px 0;
+      border-top: 1px solid rgba(27, 59, 43, 0.08);
+    }
+
+    .section-heading {
+      max-width: 620px;
+      margin: 0 auto 38px;
+      text-align: center;
+    }
+
+    .section-heading h2,
+    .privacy-copy h2 {
+      margin-bottom: 14px;
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      min-height: 290px;
+      border-radius: 16px;
+      background: var(--oat);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--sage);
+      margin-bottom: 46px;
+    }
+
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .privacy {
+      padding: 88px 0;
+    }
+
+    .privacy-panel {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      align-items: center;
+      gap: 64px;
+      border-radius: 16px;
+      background: var(--forest);
+      color: var(--white);
+      padding: 56px;
+      box-shadow: var(--shadow);
+    }
+
+    .privacy-badge-large {
+      aspect-ratio: 1;
+      max-width: 280px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 50%;
+      margin: auto;
+      text-align: center;
+    }
+
+    .privacy-badge-large svg {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 12px;
+    }
+
+    .privacy-badge-large strong {
+      display: block;
+      font-family: "Fraunces", serif;
+      font-size: 20px;
+    }
+
+    .privacy-copy p {
+      max-width: 590px;
+      margin: 0 0 24px;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.75;
+    }
+
+    .privacy-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .privacy-list span {
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 9999px;
+      padding: 9px 13px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    footer {
+      border-top: 1px solid rgba(27, 59, 43, 0.08);
+      padding: 34px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-inner p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 34px;
+        padding-top: 36px;
+      }
+
+      .hero-art {
+        max-width: 560px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        min-height: 220px;
+      }
+
+      .feature-icon {
+        margin-bottom: 28px;
+      }
+
+      .privacy-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .privacy-badge-large {
+        max-width: 220px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .shell {
+        width: min(100% - 32px, 1120px);
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .brand {
+        font-size: 21px;
+      }
+
+      .privacy-pill {
+        font-size: 10px;
+        padding: 8px 10px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 26px 0 58px;
+      }
+
+      h1 {
+        font-size: 48px;
+        letter-spacing: -2px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .waitlist-form {
+        flex-direction: column;
+      }
+
+      .waitlist-form input,
+      .waitlist-form .button {
+        width: 100%;
+      }
+
+      .form-message {
+        margin-left: 12px;
+      }
+
+      .hero-art {
+        min-height: 390px;
+      }
+
+      .phone {
+        height: 355px;
+      }
+
+      .features,
+      .privacy {
+        padding: 58px 0;
+      }
+
+      .section-heading {
+        text-align: left;
+      }
+
+      .privacy-panel {
+        gap: 34px;
+        padding: 34px 24px;
+      }
+
+      .privacy-badge-large {
+        max-width: 180px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="Persisstant home">Persisstant</a>
+      <div class="privacy-pill" title="Your email and chat access are opt-in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="5" y="10" width="14" height="10" rx="3"></rect>
+          <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+        </svg>
+        Private &amp; encrypted
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Someone looking out for you.</h1>
+        <p class="hero-copy">A thoughtful assistant for your student life—helping you prepare, stay connected, and remember what matters.</p>
+        <form class="waitlist-form" id="waitlist-form" novalidate>
+          <label for="email" hidden>Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="Your email address" aria-describedby="form-message" required>
+          <button class="button" type="submit">Join the waitlist</button>
+        </form>
+        <p class="form-message" id="form-message" aria-live="polite"></p>
+      </div>
+
+      <div class="hero-art" aria-label="A preview of Persisstant on a phone">
+        <div class="leaf"></div>
+        <div class="phone">
+          <div class="phone-speaker"></div>
+          <div class="phone-label">Good morning, Alex</div>
+          <div class="phone-card">
+            <strong>3 exams coming up</strong>
+            <span>Let’s prepare gently, one day at a time.</span>
+          </div>
+          <div class="phone-card">
+            <strong>Check in with Mom</strong>
+            <span>A little reminder for Thursday evening.</span>
+          </div>
+          <div class="phone-card">
+            <strong>Week preview</strong>
+            <span>Your 6 priorities are ready to review.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" aria-labelledby="features-title">
+      <div class="shell">
+        <div class="section-heading">
+          <h2 id="features-title">A little support, right when you need it</h2>
+          <p>Persisstant helps turn big plans into manageable next steps.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="5" width="18" height="16" rx="3"></rect>
+                <path d="M8 3v4M16 3v4M3 10h18M8 14h3M8 17h6"></path>
+              </svg>
+            </div>
+            <h3>Study reminders</h3>
+            <p>Keep 3 exams from feeling like 3 emergencies. Get steady, timed nudges that help you prepare early.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.3l7.8-7.8 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"></path>
+              </svg>
+            </div>
+            <h3>Check in on loved ones</h3>
+            <p>Remember the birthday, the Tuesday call, or simply ask how someone is doing—with 2 thoughtful nudges.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M3 3h18v18H3zM3 9h18M9 21V9"></path>
+                <path d="M6 6h.01M9 6h.01M12 6h.01"></path>
+              </svg>
+            </div>
+            <h3>Weekly &amp; semester prep</h3>
+            <p>See a clear week preview every Sunday and a semester preview before each term, with room to adjust.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="privacy" aria-labelledby="privacy-title">
+      <div class="shell">
+        <div class="privacy-panel">
+          <div class="privacy-badge-large" aria-label="Privacy and encryption badge">
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <strong>Private by default</strong>
+            </div>
+          </div>
+          <div class="privacy-copy">
+            <h2 id="privacy-title">Your life stays yours</h2>
+            <p>Email and chat access are always opt-in. Your information is encrypted, and you decide what Persisstant can remember and remind you about.</p>
+            <div class="privacy-list" aria-label="Privacy features">
+              <span>Email access: opt-in</span>
+              <span>Chat access: opt-in</span>
+              <span>Encrypted by design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <a class="brand" href="#" aria-label="Persisstant home">Persisstant</a>
+      <p>Someone looking out for you.</p>
+      <p>&copy; 2026 Persisstant</p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("waitlist-form");
+    const email = document.getElementById("email");
+    const message = document.getElementById("form-message");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const value = email.value.trim();
+      const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(value);
+
+      if (!validEmail) {
+        message.textContent = "Please enter a valid email address.";
+        message.className = "form-message error";
+        email.setAttribute("aria-invalid", "true");
+        email.focus();
+        return;
+      }
+
+      message.textContent = "You’re on the list. We’re glad you’re here.";
+      message.className = "form-message";
+      email.setAttribute("aria-invalid", "false");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
