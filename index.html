@@ -537,7 +537,7 @@
           <input id="email" name="email" type="email" autocomplete="email" placeholder="Your email address" aria-describedby="form-message" required>
           <button class="button" type="submit">Join the waitlist</button>
         </form>
-        <p class="form-message" id="form-message" aria-live="polite"></p>
+        <p class="form-message" id="form-message" aria-live="polite" hidden></p>
       </div>
 
       <div class="hero-art" aria-label="A preview of Persisstant on a phone">
@@ -651,6 +651,7 @@
       if (!validEmail) {
         message.textContent = "Please enter a valid email address.";
         message.className = "form-message error";
+        message.hidden = false;
         email.setAttribute("aria-invalid", "true");
         email.focus();
         return;
@@ -658,6 +659,7 @@
 
       message.textContent = "You’re on the list. We’re glad you’re here.";
       message.className = "form-message";
+      message.hidden = false;
       email.setAttribute("aria-invalid", "false");
       form.reset();
     });
