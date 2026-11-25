@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF6F0">
+  <meta name="description" content="Meet Persisstant, a thoughtful student assistant designed to make the busy parts of student life feel a little lighter.">
+  <title>About Persisstant — Someone looking out for you.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF6F0;
+      --oat: #EFE8DC;
+      --forest: #1B3B2B;
+      --sage: #4A7C59;
+      --white: #FFFFFF;
+      --muted: #637067;
+      --shadow: 0 12px 30px rgba(27, 59, 43, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--cream);
+      color: var(--forest);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .brand {
+      font-family: "Fraunces", serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      color: var(--sage);
+    }
+
+    .privacy-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 190px;
+      padding: 9px 13px;
+      border: 1px solid rgba(27, 59, 43, 0.12);
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.55);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .privacy-pill svg {
+      width: 16px;
+      height: 16px;
+      flex: none;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      font-family: "Fraunces", serif;
+    }
+
+    .hero {
+      padding: 68px 0 74px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--sage);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0 auto 20px;
+      font-size: clamp(42px, 9vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -2.5px;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(16px, 2.5vw, 19px);
+      line-height: 1.75;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding-bottom: 76px;
+    }
+
+    .story-card {
+      border-radius: 16px;
+      background: var(--oat);
+      padding: clamp(24px, 5vw, 40px);
+      box-shadow: var(--shadow);
+    }
+
+    .story-card h2 {
+      margin-bottom: 14px;
+      font-size: clamp(26px, 4vw, 34px);
+      line-height: 1.12;
+    }
+
+    .story-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .examples {
+      padding: 76px 0;
+      border-top: 1px solid rgba(27, 59, 43, 0.08);
+    }
+
+    .section-heading {
+      max-width: 640px;
+      margin: 0 auto 34px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 12px;
+      font-size: clamp(34px, 6vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .example-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .example-card {
+      min-height: 220px;
+      border-radius: 16px;
+      background: var(--white);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .example-number {
+      display: inline-grid;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 24px;
+      place-items: center;
+      border-radius: 50%;
+      background: #E5EDDF;
+      color: var(--forest);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .example-card h3 {
+      margin-bottom: 8px;
+      font-size: 21px;
+    }
+
+    .example-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .privacy {
+      padding: 24px 0 76px;
+    }
+
+    .privacy-panel {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 30px;
+      border-radius: 16px;
+      background: var(--forest);
+      color: var(--white);
+      padding: clamp(28px, 6vw, 48px);
+      box-shadow: var(--shadow);
+    }
+
+    .privacy-icon {
+      width: 88px;
+      height: 88px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 50%;
+    }
+
+    .privacy-icon svg {
+      width: 38px;
+      height: 38px;
+    }
+
+    .privacy-copy h2 {
+      margin-bottom: 10px;
+      font-size: clamp(28px, 5vw, 38px);
+      line-height: 1.1;
+    }
+
+    .privacy-copy p {
+      max-width: 690px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .cta {
+      padding: 24px 0 84px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 12px;
+      font-size: clamp(32px, 6vw, 46px);
+    }
+
+    .cta p {
+      max-width: 560px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      background: var(--forest);
+      color: var(--white);
+      padding: 0 24px;
+      box-shadow: 0 10px 22px rgba(27, 59, 43, 0.16);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--sage);
+    }
+
+    footer {
+      border-top: 1px solid rgba(27, 59, 43, 0.08);
+      padding: 26px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-inner p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-link {
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding: 54px 0 58px;
+      }
+
+      .story,
+      .example-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story {
+        padding-bottom: 58px;
+      }
+
+      .example-card {
+        min-height: auto;
+      }
+
+      .example-number {
+        margin-bottom: 16px;
+      }
+
+      .examples {
+        padding: 58px 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand {
+        font-size: 19px;
+      }
+
+      .nav-actions {
+        gap: 6px;
+      }
+
+      .nav-link {
+        font-size: 12px;
+      }
+
+      .privacy-pill {
+        max-width: 136px;
+        padding: 8px;
+        font-size: 9px;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .privacy {
+        padding: 12px 0 58px;
+      }
+
+      .privacy-panel {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .privacy-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto;
+      }
+
+      .privacy-icon svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .cta {
+        padding-bottom: 58px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Persisstant home">Persisstant</a>
+      <div class="nav-actions">
+        <a class="nav-link" href="index.html">Home</a>
+        <div class="privacy-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <rect x="5" y="10" width="14" height="10" rx="3"></rect>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+          </svg>
+          Encrypted · email &amp; chat opt-in
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell" aria-labelledby="about-title">
+      <p class="eyebrow">A little more about us</p>
+      <h1 id="about-title">Student life is a lot to carry on your own.</h1>
+      <p class="hero-copy">Persisstant is being built to offer thoughtful support through the busy weeks, big plans, and small moments that make up student life. A gentle nudge can help you feel a little more ready for what’s next.</p>
+    </section>
+
+    <section class="story shell" aria-label="Our approach">
+      <article class="story-card">
+        <h2>Support, without taking over</h2>
+        <p>We believe useful help should fit around your life, not add another thing to manage. Persisstant is designed to help you remember what matters and break a full week into kinder, more manageable steps.</p>
+      </article>
+      <article class="story-card">
+        <h2>Made for the whole picture</h2>
+        <p>Student life is more than classes. It’s preparing for exams, keeping up with people you love, and finding a moment to look ahead. We’re bringing those everyday pieces together with care.</p>
+      </article>
+    </section>
+
+    <section class="examples" aria-labelledby="examples-title">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow">The little things add up</p>
+          <h2 id="examples-title">A helping hand for your real week</h2>
+          <p>Here are a few ways thoughtful reminders could make a busy student week feel lighter.</p>
+        </div>
+        <div class="example-grid">
+          <article class="example-card">
+            <span class="example-number" aria-hidden="true">01</span>
+            <h3>Study, one step at a time</h3>
+            <p>With 3 exams coming up, gentle study reminders can help turn a big revision plan into smaller, easier steps.</p>
+          </article>
+          <article class="example-card">
+            <span class="example-number" aria-hidden="true">02</span>
+            <h3>Remember your people</h3>
+            <p>A warm nudge to call your sister after class, or ask how Mom’s appointment went, can help you stay close.</p>
+          </article>
+          <article class="example-card">
+            <span class="example-number" aria-hidden="true">03</span>
+            <h3>See the week ahead</h3>
+            <p>A Sunday preview can bring your classes, study time, and 2 personal priorities into one calm place.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="privacy shell" aria-labelledby="privacy-title">
+      <div class="privacy-panel">
+        <div class="privacy-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+        </div>
+        <div class="privacy-copy">
+          <h2 id="privacy-title">Your choices come first</h2>
+          <p>Email and chat access are opt-in, always. Your information is encrypted, and you decide what Persisstant can remember and remind you about.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta shell" aria-labelledby="cta-title">
+      <h2 id="cta-title">We’re glad you’re here.</h2>
+      <p>Take a look at the Persisstant homepage and its waitlist preview. The signup isn’t connected yet, so any email you enter won’t be sent or saved.</p>
+      <a class="button" href="index.html#waitlist-form">Visit the waitlist preview</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <a class="brand" href="index.html" aria-label="Persisstant home">Persisstant</a>
+      <p>Someone looking out for you.</p>
+      <a class="footer-link" href="index.html">Home</a>
+    </div>
+  </footer>
+</body>
+</html>
